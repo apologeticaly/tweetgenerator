@@ -1,0 +1,14 @@
+cat
+dog
+hat
+man
+mouse
+chicken
+TNT
+apples
+pakistan
+america
+politics
+sanders
+warren
+biden
