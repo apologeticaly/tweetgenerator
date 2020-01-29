@@ -30,7 +30,7 @@ def unique():
             unique_words = unique_words + 1
             used_words.append(word)
 
-    return unique_words
+    return 'There are ' + str(unique_words) + ' unique words in this list!'
 
 
 def frequency(search):
@@ -45,6 +45,11 @@ if __name__ == '__main__':
     for word in histogram():
         print(word, histo[word])
 
+    print("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+")
+
     print(unique())
+
+    print("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+")
+
     print(frequency(sys.argv[1]))
     
