@@ -14,7 +14,6 @@ histo = {}
 histo_tuplo  = []
 histo_listo = []
 
-
 def histogram():
     for word in clean(corpus):           
         if word in histo: 
@@ -26,20 +25,22 @@ def histogram():
 
 def listogram():
     for word in clean(corpus):
-        if word in histo_listo:
-            counter = histo_listo.index(word[1])
-            histo_listo.remove([word, 1])
-            histo_listo.append([word, counter+1])
-        else:
-            histo_listo.append([word, 1])
+        counter = [word, 0]
+
+        for word2 in clean(corpus):
+            if word == word2:
+                counter[1] += 1
+        if counter not in histo_listo:
+            histo_listo.append(counter)
+
     return histo_listo
 
 def tuplogram():
-    for word in clean(corpus):
-        if word in histo_tuplo:
-            histo_tuplo.append((word,  1))
-        else:
-            histo_tuplo.append((word, 1))
+    source = listogram()
+
+    for item in source:
+        histo_tuplo.append(tuple(item))
+
     return histo_tuplo
 
 def unique():
@@ -73,5 +74,7 @@ if __name__ == '__main__':
     # print("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+")
 
     # print(frequency(sys.argv[1]))
-    
+
+    print(histogram())
     print(listogram())
+    print(tuplogram())
