@@ -10,24 +10,26 @@ def clean(corpus):
         scrubbed_words = re.sub(r'[^a-zA-Z\s]', '', corpus).lower().split()
         return scrubbed_words
 
-histo = {}
+dicto = {}
 histo_tuplo  = []
 histo_listo = []
 
-def histogram():
-    for word in clean(corpus):           
-        if word in histo: 
-            histo[word] += 1
+text = clean(corpus)
+
+def dictogram(text):
+    for word in text:           
+        if word in dicto: 
+            dicto[word] += 1
         else: 
-            histo[word] = 1
+            dicto[word] = 1
 
-    return histo
+    return dicto
 
-def listogram():
-    for word in clean(corpus):
+def listogram(text):
+    for word in text:
         counter = [word, 0]
 
-        for word2 in clean(corpus):
+        for word2 in text:
             if word == word2:
                 counter[1] += 1
         if counter not in histo_listo:
@@ -36,7 +38,7 @@ def listogram():
     return histo_listo
 
 def tuplogram():
-    source = listogram()
+    source = listogram(text)
 
     for item in source:
         histo_tuplo.append(tuple(item))
@@ -56,16 +58,16 @@ def unique():
 
 
 def frequency(search):
-    if search in histogram():
-        return 'The word ' + str(search) + ' occurs ' + str(histo[search]) + ' times!'
+    if search in dictogram(text):
+        return 'The word ' + str(search) + ' occurs ' + str(dicto[search]) + ' times!'
     else:
         return 'Word does not occur'
 
 if __name__ == '__main__':
     # print(clean(corpus))
     # print(histogram)
-    for word in histogram():
-       print(word, histo[word])
+    for word in dictogram(text):
+       print(word, dicto[word])
 
     # print("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+")
 
@@ -75,6 +77,6 @@ if __name__ == '__main__':
 
     # print(frequency(sys.argv[1]))
 
-    print(histogram())
-    print(listogram())
+    print(dictogram(text))
+    print(listogram(text))
     print(tuplogram())
