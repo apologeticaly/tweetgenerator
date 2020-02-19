@@ -5,7 +5,7 @@ from random import randint
 from histogram import listogram, clean
 
 # Declare the source of knowledge
-source_text = 'paragraph.txt'
+source_text = 'ht.txt'
 
 corpus = clean(source_text)
 
