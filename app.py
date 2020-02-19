@@ -4,8 +4,10 @@ from simple_sample import run
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
-def hello_world():
-    return ' '.join(run())
+def index():
+    msg = ' '.join(run())
+     
+    return render_template('index.html', msg=msg)
 
 if __name__ == "__main__":
-    app.hello_world(debug=True)
+    app.run(debug=True)
