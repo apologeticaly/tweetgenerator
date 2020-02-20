@@ -1,5 +1,5 @@
 from random import randint
-import numpy as np
+import random
 
 class Listogram:
 
@@ -43,13 +43,16 @@ class Listogram:
     def get_index(self, word, list_histogram):
         '''searches in the list histogram parameter and returns the index of the inner list that contains the word if present'''
         #TODO: use your get_index function as a starting point to complete this method
-        return [(ind, list_histogram[ind].index(word)) for ind in xrange(len(list_histogram)) if word in list_histogram[ind]]
+        
+        for i in range(len(self.list_histogram)):
+            if word in self.list_histogram[i]:
+                return i
 
     def frequency(self, word):
         '''returns the frequency or count of the given word in the list of lists histogram'''
-        self.get_index(word, self.list_histogram)
-
-        pass
+        for i in range(len(self.list_histogram)):
+            if word in self.list_histogram[i]:
+                return self.list_histogram[i][1]
         
     def unique_words(self):
         '''returns the number of unique words in the list of lists histogram'''
@@ -71,6 +74,14 @@ class Listogram:
 
         #TODO: use your sample function as a starting point to complete this method 
         #You will need to adapt it a little bit to work with listogram
+
+        count = randint(1, self.tokens)
+        for word in self.list_histogram:
+            count -= word[1]
+            if count <= 0:
+                return word[0]
+
+        return word[0]
 
 def print_listogram(word_list):
     '''Creates a list based histogram (listogram) and then prints out its properties and samples from it'''
