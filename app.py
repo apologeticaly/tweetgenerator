@@ -1,5 +1,5 @@
 from flask import Flask, render_template, Response, request, redirect, url_for
-from simple_sample import run
+from sample import run
 
 app = Flask(__name__)
 

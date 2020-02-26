@@ -24,8 +24,13 @@ def sample():
     for key, value in dictogram.items():
         total += value
         
-        if rand_val <= total:
+        if rand_val < total:
             return key
 
+def run():
+    sentence = []
+    while len(sentence) <= 7:
+        sentence.append(sample())
+    return sentence
 # for _ in range(100):
-#    print(sample())
+sample()
