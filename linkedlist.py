@@ -44,7 +44,6 @@ class LinkedList(object):
         while current:
             if current.data == old_item:
                 current.data == new_item
-
             current = current.next
 
         if current is None:
